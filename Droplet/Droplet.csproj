@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileProcessor.cs" />
+    <Compile Include="PhotoProcessor.cs" />
     <Compile Include="ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>

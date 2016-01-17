@@ -8,7 +8,7 @@ namespace PhotoDateCorrector
 	{
 		public static void ProcessImage(String filePath)
 		{
-
+			return;
 		}
 	}
 }

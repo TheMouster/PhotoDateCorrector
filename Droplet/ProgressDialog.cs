@@ -16,5 +16,10 @@ namespace Droplet
 		{
 			InitializeComponent();
 		}
+
+		public ProgressDialog(String[] filePaths)
+		{
+
+		}
 	}
 }
