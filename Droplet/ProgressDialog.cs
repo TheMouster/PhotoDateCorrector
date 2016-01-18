@@ -13,8 +13,8 @@ namespace PhotoDateCorrector
 
 		public ProgressDialog(String[] filePaths) : this()
 		{
-			progressBar.Minimum = 0;
-			progressBar.Maximum = 100;
+			//progressBar.Minimum = 0;
+			//progressBar.Maximum = 100;
 			backgroundWorker.RunWorkerAsync(filePaths);
 		}
 
@@ -22,7 +22,7 @@ namespace PhotoDateCorrector
 		{
 			String[] filePaths = (String[])e.Argument;
 
-			int numberProcessed = 0;
+			int numberProcessed = 1, progressPercentage = 0;
 			int numberToProcess = filePaths.Length;
 
 			foreach(var path in filePaths)
@@ -33,8 +33,8 @@ namespace PhotoDateCorrector
 					break;
 				}
 				PhotoProcessor.ProcessImage(path);
-				numberProcessed++;
-				backgroundWorker.ReportProgress(numberProcessed * 100 / filePaths.Length);
+				progressPercentage = (numberProcessed++ * 100) / filePaths.Length;
+				backgroundWorker.ReportProgress(progressPercentage);
 			}
 		}
 

@@ -42,6 +42,7 @@
 			this.progressBar.Location = new System.Drawing.Point(12, 12);
 			this.progressBar.Name = "progressBar";
 			this.progressBar.Size = new System.Drawing.Size(531, 33);
+			this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
 			this.progressBar.TabIndex = 0;
 			this.progressBar.UseWaitCursor = true;
 			// 
@@ -73,10 +74,12 @@
 			this.ClientSize = new System.Drawing.Size(721, 57);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.progressBar);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ProgressDialog";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Photo Date Corrector";
 			this.UseWaitCursor = true;
 			this.ResumeLayout(false);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ExifLibrary;
+using System.Collections.Generic;
 
 namespace PhotoDateCorrector
 {
@@ -17,16 +18,23 @@ namespace PhotoDateCorrector
 		public static void ProcessImage(String filePath)
 		{
 			ExifFile image = ExifFile.Read(filePath);
-			DateTime whenDigitised = (DateTime)image.Properties[ExifTag.DateTimeDigitized].Value;
 
-			//Correct the EXIF values in the image and save it.
-			image.Properties[ExifTag.DateTime].Value = whenDigitised;
-			image.Properties[ExifTag.DateTimeOriginal].Value = whenDigitised;
-			image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
-			image.Save(filePath);
+			try
+			{
+				DateTime whenDigitised = (DateTime)image.Properties[ExifTag.DateTimeDigitized].Value;
 
-			//Update the images' file creation time.
-			File.SetCreationTime(filePath, whenDigitised);
+				//Correct the EXIF values in the image and save it.
+				image.Properties[ExifTag.DateTime].Value = whenDigitised;
+				image.Properties[ExifTag.DateTimeOriginal].Value = whenDigitised;
+				image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
+				image.Save(filePath);
+
+				//Update the images' file creation time.
+				File.SetCreationTime(filePath, whenDigitised);
+			}
+			catch(KeyNotFoundException) //EXIF data doesn't contain a DateTimeDigitized tag
+			{
+			}
 		}
 	}
 }
