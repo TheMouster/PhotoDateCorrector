@@ -13,8 +13,6 @@ namespace Droplet
 {
 	public partial class ProgressDialog : Form
 	{
-		BackgroundWorker backgroundWorker;
-
 		public ProgressDialog()
 		{
 			InitializeComponent();

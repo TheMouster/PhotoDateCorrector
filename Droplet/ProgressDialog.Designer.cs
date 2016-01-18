@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressDialog));
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
 			this.SuspendLayout();
 			// 
 			// progressBar1
@@ -62,6 +63,7 @@
 		#endregion
 
 		private System.Windows.Forms.ProgressBar progressBar1;
+		private System.ComponentModel.BackgroundWorker backgroundWorker;
 	}
 }
 
