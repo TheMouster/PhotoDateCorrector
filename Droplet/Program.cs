@@ -1,8 +1,7 @@
-﻿using PhotoDateCorrector;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
-namespace Droplet
+namespace PhotoDateCorrector
 {
 	static class Program
 	{

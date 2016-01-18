@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Droplet")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Photo Date Corrector")]
+[assembly: AssemblyDescription("Corrects the EXIF dates of photos to match the date-digitised.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Droplet")]
+[assembly: AssemblyCompany("Classified Developments")]
+[assembly: AssemblyProduct("Photo Date Corrector")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
