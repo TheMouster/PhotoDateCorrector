@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PhotoDateCorrector;
 
 namespace Droplet
 {
 	public partial class ProgressDialog : Form
 	{
+		BackgroundWorker backgroundWorker;
+
 		public ProgressDialog()
 		{
 			InitializeComponent();
@@ -19,7 +22,10 @@ namespace Droplet
 
 		public ProgressDialog(String[] filePaths)
 		{
-
+			foreach (var path in filePaths)
+			{
+				PhotoProcessor.ProcessImage(path);
+			}
 		}
 	}
 }
