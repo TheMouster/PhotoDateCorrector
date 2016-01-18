@@ -11,7 +11,7 @@ namespace PhotoDateCorrector
 			InitializeComponent();
 		}
 
-		public ProgressDialog(String[] filePaths)
+		public ProgressDialog(String[] filePaths) : this()
 		{
 			progressBar.Minimum = 0;
 			progressBar.Maximum = 100;
@@ -45,7 +45,7 @@ namespace PhotoDateCorrector
 
 		private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			//Unused.
+			Close(); //Close the form. We're done.
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
