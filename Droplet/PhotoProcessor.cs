@@ -29,10 +29,13 @@ namespace PhotoDateCorrector
 				image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
 				image.Save(filePath);
 
+				//TODO: Deal with the situation where tags don't exist and need to be created. I'm looking at you
+				//ThumbnailDateTime tag.
+
 				//Update the images' file creation time.
 				File.SetCreationTime(filePath, whenDigitised);
 			}
-			catch(KeyNotFoundException) //EXIF data doesn't contain a DateTimeDigitized tag
+			catch(KeyNotFoundException) //EXIF data doesn't contain a specified tag
 			{
 			}
 		}
