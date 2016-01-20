@@ -30,30 +30,34 @@ namespace PhotoDateCorrector
 			}
 			
 			//Correct the EXIF values in the image and save it.
-			//TODO: Deal with the situation where tags don't exist and need to be created. I'm looking at you
-			//ThumbnailDateTime tag.
 			try
 			{
 				image.Properties[ExifTag.DateTime].Value = whenDigitised;
 			}
-			catch(KeyNotFoundException)
+			catch(KeyNotFoundException) //No DateTime? Add one.
 			{
+				var dateTime = new ExifDateTime(ExifTag.DateTime, whenDigitised);
+				image.Properties.Add(ExifTag.DateTime, dateTime);
 			}
 
 			try
 			{
 				image.Properties[ExifTag.DateTimeOriginal].Value = whenDigitised;
 			}
-			catch (KeyNotFoundException)
+			catch (KeyNotFoundException) //No DateTimeOriginal? Add one.
 			{
+				var dateTimeOriginal = new ExifDateTime(ExifTag.DateTimeOriginal, whenDigitised);
+				image.Properties.Add(ExifTag.DateTimeOriginal, dateTimeOriginal);
 			}
 
 			try
 			{
 				image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
 			}
-			catch (KeyNotFoundException)
+			catch (KeyNotFoundException) //No ThumbnailDateTime? Add one.
 			{
+				var thumbnailDate = new ExifDateTime(ExifTag.ThumbnailDateTime, whenDigitised);
+				image.Properties.Add(ExifTag.ThumbnailDateTime, thumbnailDate);
 			}
 
 			image.Save(filePath);
