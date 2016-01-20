@@ -18,26 +18,48 @@ namespace PhotoDateCorrector
 		public static void ProcessImage(String filePath)
 		{
 			ExifFile image = ExifFile.Read(filePath);
+			DateTime whenDigitised = DateTime.MinValue;
 
 			try
 			{
-				DateTime whenDigitised = (DateTime)image.Properties[ExifTag.DateTimeDigitized].Value;
-
-				//Correct the EXIF values in the image and save it.
-				image.Properties[ExifTag.DateTime].Value = whenDigitised;
-				image.Properties[ExifTag.DateTimeOriginal].Value = whenDigitised;
-				image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
-				image.Save(filePath);
-
-				//TODO: Deal with the situation where tags don't exist and need to be created. I'm looking at you
-				//ThumbnailDateTime tag.
-
-				//Update the images' file creation time.
-				File.SetCreationTime(filePath, whenDigitised);
+				whenDigitised = (DateTime)image.Properties[ExifTag.DateTimeDigitized].Value;
 			}
-			catch(KeyNotFoundException) //EXIF data doesn't contain a specified tag
+			catch(KeyNotFoundException) //EXIF data doesn't contain a DateTimeDigitized flag
+			{
+				return;
+			}
+			
+			//Correct the EXIF values in the image and save it.
+			//TODO: Deal with the situation where tags don't exist and need to be created. I'm looking at you
+			//ThumbnailDateTime tag.
+			try
+			{
+				image.Properties[ExifTag.DateTime].Value = whenDigitised;
+			}
+			catch(KeyNotFoundException)
 			{
 			}
+
+			try
+			{
+				image.Properties[ExifTag.DateTimeOriginal].Value = whenDigitised;
+			}
+			catch (KeyNotFoundException)
+			{
+			}
+
+			try
+			{
+				image.Properties[ExifTag.ThumbnailDateTime].Value = whenDigitised;
+			}
+			catch (KeyNotFoundException)
+			{
+			}
+
+			image.Save(filePath);
+			
+			//Update the images' file creation time.
+			File.SetCreationTime(filePath, whenDigitised);
 		}
 	}
 }
