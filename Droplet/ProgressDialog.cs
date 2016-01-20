@@ -40,7 +40,7 @@ namespace PhotoDateCorrector
 
 		private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
-			progressBar.Value = e.ProgressPercentage;
+			progressBar.ValueFast(e.ProgressPercentage);
 		}
 
 		private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -51,6 +51,20 @@ namespace PhotoDateCorrector
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			backgroundWorker.CancelAsync();
+		}
+	}
+
+	public static class ProgressBarExtensions
+	{
+		public static void ValueFast(this ProgressBar progressBar, int value)
+		{
+			if (value < progressBar.Maximum)    // prevent ArgumentException error on value = 100
+			{
+				progressBar.Value = value + 1;    // set the value +1
+			}
+
+			progressBar.Value = value;    // set the actual value
+
 		}
 	}
 }
