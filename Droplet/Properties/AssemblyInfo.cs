@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Photo Date Corrector")]
-[assembly: AssemblyDescription("Corrects the EXIF dates of photos to match the date-digitised.")]
+[assembly: AssemblyDescription("Corrects the EXIF dates of images to match the date-digitised.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Classified Developments")]
 [assembly: AssemblyProduct("Photo Date Corrector")]
