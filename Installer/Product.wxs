@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define Droplet_TargetDir=$(var.Droplet.TargetDir)?>
-  <Product Id="*" Name="Installer" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="87e9a38a-3740-4bbd-a80a-7a58781c8fb6">
+  <Product Id="*" Name="Photo Date Corrector" Language="1033" Version="1.0.0.0" 
+           Manufacturer="Classified Developments" UpgradeCode="87e9a38a-3740-4bbd-a80a-7a58781c8fb6">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -15,7 +16,7 @@
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="Installer" />
+        <Directory Id="INSTALLFOLDER" Name="PhotoDateCorrector" />
       </Directory>
     </Directory>
   </Fragment>
@@ -32,8 +33,6 @@
       <Component Id="EXIFLibrary.dll" Guid="d070b269-8ae9-4553-8a2a-ae438eff620d">
         <File Id="EXIFLibrary.dll" Name="EXIFLibrary.dll" Source="$(var.Droplet_TargetDir)EXIFLibrary.dll" />
       </Component>
-
-
       <Component Id="PhotoDateCorrector.exe" Guid="3acfb121-d987-45e0-b0e4-02db6f990200">
         <File Id="PhotoDateCorrector.exe" Name="PhotoDateCorrector.exe" Source="$(var.Droplet_TargetDir)PhotoDateCorrector.exe" />
       </Component>
