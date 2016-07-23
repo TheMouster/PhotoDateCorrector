@@ -2,6 +2,7 @@
 using System.IO;
 using ExifLibrary;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PhotoDateCorrector
 {
@@ -9,10 +10,17 @@ namespace PhotoDateCorrector
 	{
 		public static void ProcessImages(String[] filePaths)
 		{
-			foreach(var path in filePaths)
+			/*
+			foreach (var path in filePaths)
 			{
 				ProcessImage(path);
 			}
+			*/
+
+			Parallel.ForEach(filePaths, (currentFile) =>
+			{
+				ProcessImage(currentFile);
+			});
 		}
 
 		public static void ProcessImage(String filePath)
