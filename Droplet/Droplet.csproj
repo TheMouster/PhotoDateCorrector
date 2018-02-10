@@ -40,8 +40,9 @@
     <ApplicationIcon>1451208886_photo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EXIFLibrary">
-      <HintPath>..\..\..\Libraries\EXIFLibrary for .NET\ExifLibrary\bin\Release\EXIFLibrary.dll</HintPath>
+    <Reference Include="ExifLibrary, Version=0.18.0.0, Culture=neutral, PublicKeyToken=95a98932199e0fa7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\EXIFLibrary\ExifLibrary\bin\Release\ExifLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

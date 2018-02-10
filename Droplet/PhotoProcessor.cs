@@ -25,7 +25,7 @@ namespace PhotoDateCorrector
 
 		public static void ProcessImage(String filePath)
 		{
-			ExifFile image = ExifFile.Read(filePath);
+            ImageFile image = ImageFile.FromFile(filePath);
 			DateTime whenDigitised = DateTime.MinValue;
 
 			try
