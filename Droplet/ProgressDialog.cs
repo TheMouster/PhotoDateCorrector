@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace PhotoDateCorrector
 {
-	public partial class ProgressDialog : Form
+    public partial class ProgressDialog : Form
 	{
 		public ProgressDialog()
 		{
@@ -13,9 +13,9 @@ namespace PhotoDateCorrector
 
 		public ProgressDialog(String[] filePaths) : this()
 		{
-			//progressBar.Minimum = 0;
-			//progressBar.Maximum = 100;
-			backgroundWorker.RunWorkerAsync(filePaths);
+            //progressBar.Minimum = 0;
+            //progressBar.Maximum = 100;
+            backgroundWorker.RunWorkerAsync(filePaths);
 		}
 
 		private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)

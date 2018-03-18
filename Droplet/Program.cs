@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace PhotoDateCorrector
 {
-	static class Program
+    static class Program
 	{
 		/// <summary>
 		/// The main entry point for the application.
@@ -17,7 +17,7 @@ namespace PhotoDateCorrector
 				return;
 			}
 
-			//If there's only 1 file don't bother to display the progress dialog. 
+            //If there's only 1 file don't bother to display the progress dialog. 
 			if (filePaths.Length == 1)
 				PhotoProcessor.ProcessImage(filePaths[0]);
 			else

@@ -1,25 +1,18 @@
-﻿using System;
-using System.IO;
-using ExifLibrary;
+﻿using ExifLibrary;
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace PhotoDateCorrector
 {
-	public static class PhotoProcessor
+    public static class PhotoProcessor
 	{
         const String APPLICATION_LOG = "Application";
 
         public static void ProcessImages(String[] filePaths)
 		{
-			/*
-			foreach (var path in filePaths)
-			{
-				ProcessImage(path);
-			}
-			*/
-
 			Parallel.ForEach(filePaths, (currentFile) =>
 			{
 				ProcessImage(currentFile);
@@ -28,9 +21,19 @@ namespace PhotoDateCorrector
 
 		public static void ProcessImage(String filePath)
 		{
-            ImageFile image = ImageFile.FromFile(filePath);
-			DateTime whenDigitised = DateTime.MinValue;
+            ImageFile image;
 
+            try
+            {
+                image = ImageFile.FromFile(filePath);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry(APPLICATION_LOG, FormatMessage(ex.Message), EventLogEntryType.Error);
+                return;
+            }
+
+            DateTime whenDigitised = DateTime.MinValue;
 			try
 			{
 				whenDigitised = (DateTime)image.Properties[ExifTag.DateTimeDigitized].Value;
